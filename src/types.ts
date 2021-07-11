@@ -4,8 +4,8 @@ export type Place = {
   district: string;
   address: string;
   phone: string;
-  lng?: string;
-  lat?: string;
+  lng?: number;
+  lat?: number;
   specialty?: string;
   serial?: string;
   note?: string;
