@@ -39,8 +39,7 @@ const convertPdfToText = () => {
 const parse = () => {
   const lines = fs.readFileSync(textFile).toString('utf8').split('\n');
 
-  // 臺南市COVID-19疫苗接種合約醫院名冊
-
+  const city = '台南市';
   const csvKeys = [
     'city',
     'name',
@@ -66,11 +65,14 @@ const parse = () => {
     // 'department',
   ];
   const results = [];
+
+  /**
+   * 臺南市COVID-19疫苗接種合約醫院名冊
+   */
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].indexOf('衛生所名冊') !== -1) break;
     if (lines[i].indexOf('專責') !== -1 && lines[i + 1] === '醫院') {
       let j = i;
-      const city = '台南市';
       const specialty = lines[i] + lines[i + 1];
       const serial = lines[j + 2];
       const district = lines[j + 3];
@@ -129,6 +131,24 @@ const parse = () => {
       results.push(result);
     }
   }
+
+  /**
+   * 臺南市COVID-19疫苗接種合約衛生所名冊
+   */
+  for (const line of lines) {
+    const regResult = line.match(/(^\d+)(.*區)(.*)(06-\d+)(.*)$/);
+    // 188歸仁區李明鎮家庭醫學科診所06-2306990台南市歸仁區中山路一段330號
+    if (regResult) {
+      results.push({
+        city,
+        district: regResult[2],
+        name: regResult[3],
+        phone: regResult[4],
+        address: regResult[5],
+      });
+    }
+  }
+
   console.log(JSON.stringify(results, null, 2));
   // console.log(jsonToCsv(csvKeys, csvKeysMap, results).join('\n'));
 };
