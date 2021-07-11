@@ -136,7 +136,7 @@ const parse = () => {
    * 臺南市COVID-19疫苗接種合約衛生所名冊
    */
   for (const line of lines) {
-    const regResult = line.match(/(^\d+)(.*區)(.*)(06-\d+)(.*)$/);
+    const regResult = line.match(/(^\d+)(\S{1,3}區)(.*)(06-\d{7})(.*)$/);
     // 188歸仁區李明鎮家庭醫學科診所06-2306990台南市歸仁區中山路一段330號
     if (regResult) {
       results.push({
@@ -149,8 +149,8 @@ const parse = () => {
     }
   }
 
-  console.log(JSON.stringify(results, null, 2));
-  // console.log(jsonToCsv(csvKeys, csvKeysMap, results).join('\n'));
+  // console.log(JSON.stringify(results, null, 2));
+  console.log(jsonToCsv(csvKeys, csvKeysMap, results).join('\n'));
 };
 
 parse();
