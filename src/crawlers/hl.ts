@@ -30,9 +30,9 @@ const parse = async () => {
     const name = text.match(/醫療院所名稱：(.*)/)?.[1]?.trim() ?? '';
     const district = text.match(/鄉鎮市區：(.*)/)?.[1]?.trim() ?? '';
     const address = text.match(/地址：(.*)/)?.[1]?.trim() ?? '';
-    const phone = text.match(/預約電話|洽詢電話：(.*)/)?.[1]?.trim() ?? '';
+    const phone = text.match(/(預約電話|洽詢電話)：(.*)/)?.[2]?.trim() ?? '';
     results.push({ city, name, district, address, phone });
-    console.log(index, name);
+    console.log(index, name, phone);
   });
   fs.writeFileSync(outputJson, JSON.stringify(results, null, 2));
   fs.writeFileSync(outputCsv, jsonToCsv(csvKeys, results).join('\n'));
