@@ -66,8 +66,8 @@ pdf(dataBuffer).then(function (data) {
       const serial = lines[j + 2];
       const district = lines[j + 3];
 
-      j = j + 4;
-      let name = '';
+      let name = lines[j + 4];
+      j = j + 5;
       while (!lines[j].startsWith('台南市') && !lines[j].startsWith('7')) {
         name += lines[j++];
       }
