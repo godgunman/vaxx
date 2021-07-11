@@ -19,7 +19,7 @@ const data = fs.readFileSync(xmlFile);
 xml2js
   .parseStringPromise(data /*, options */)
   .then(async function (result) {
-    const city = '屏東市';
+    const city = '屏東縣';
     const csvKeys = [
       'city',
       'name',
