@@ -3,32 +3,41 @@ import pdf from 'pdf-parse';
 import path from 'path';
 import { jsonToCsv } from '../libs';
 
-const dataBuffer = fs.readFileSync(
-  path.join(
-    __dirname,
-    '..',
-    '..',
-    'data',
-    '臺南市COVID-19疫苗接種合約醫療院所名冊-1100707更新3.pdf',
-  ),
+const pdfFile = path.join(
+  __dirname,
+  '..',
+  '..',
+  'data',
+  '臺南市COVID-19疫苗接種合約醫療院所名冊-1100707更新3.pdf',
 );
+const textFile = pdfFile.replace('.pdf', '.txt');
 
-pdf(dataBuffer).then(function (data) {
-  // number of pages
-  // console.log(data.numpages);
-  // number of rendered pages
-  // console.log(data.numrender);
-  // PDF info
-  // console.log(data.info);
-  // PDF metadata
-  // console.log(data.metadata);
-  // PDF.js version
-  // check https://mozilla.github.io/pdf.js/getting_started/
-  // console.log(data.version);
-  // PDF text
+// eslint-disable-next-line no-unused-vars
+const convertPdfToText = () => {
+  const dataBuffer = fs.readFileSync(pdfFile);
+  pdf(dataBuffer).then(function (data) {
+    // number of pages
+    // console.log(data.numpages);
+    // number of rendered pages
+    // console.log(data.numrender);
+    // PDF info
+    // console.log(data.info);
+    // PDF metadata
+    // console.log(data.metadata);
+    // PDF.js version
+    // check https://mozilla.github.io/pdf.js/getting_started/
+    // console.log(data.version);
+    // PDF text
 
-  const lines = data.text.split('\n');
-  // console.log(lines.map((e, index) => `${index}:${e}`).join('\n'));
+    fs.writeFileSync(textFile, data.text);
+    // const lines = data.text.split('\n');
+    // console.log(lines.map((e, index) => `${index}:${e}`).join('\n'));
+  });
+};
+// convertPdfToText();
+
+const parse = () => {
+  const lines = fs.readFileSync(textFile).toString('utf8').split('\n');
 
   // 臺南市COVID-19疫苗接種合約醫院名冊
 
@@ -122,4 +131,6 @@ pdf(dataBuffer).then(function (data) {
   }
   console.log(JSON.stringify(results, null, 2));
   // console.log(jsonToCsv(csvKeys, csvKeysMap, results).join('\n'));
-});
+};
+
+parse();
