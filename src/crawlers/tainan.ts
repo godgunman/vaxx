@@ -76,20 +76,34 @@ pdf(dataBuffer).then(function (data) {
       let phone = '';
       if (lines[j].indexOf('06-') !== -1) {
         [address, phone] = lines[j].split('06-');
+        phone = '06-' + phone;
       } else {
-        while (!lines[j].startsWith('06-')) {
+        while (!lines[j].startsWith('06-') && lines[j].indexOf('序號') === -1) {
           address += lines[j++];
         }
         phone = lines[j];
       }
 
-      // 掛號科別
-      const department = lines[j + 1];
-      j = j + 2;
+      let department = '';
       let note = '';
 
-      while (lines[j] && lines[j].indexOf('專責') === -1) {
-        note += lines[j++];
+      if (lines[i] === '專責') {
+        // special case
+        if (lines[j] === '序號') {
+          department = 'COVID-19疫苗注射門診';
+          phone = '06-2705911';
+        } else {
+          department = lines[j + 1];
+          j = j + 2;
+
+          while (
+            lines[j] &&
+            lines[j].indexOf('專責') === -1 &&
+            lines[j].indexOf('序號') === -1
+          ) {
+            note += lines[j++];
+          }
+        }
       }
 
       const result = {
@@ -106,6 +120,6 @@ pdf(dataBuffer).then(function (data) {
       results.push(result);
     }
   }
-  // console.log(JSON.stringify(results, null, 2));
-  console.log(jsonToCsv(csvKeys, csvKeysMap, results).join('\n'));
+  console.log(JSON.stringify(results, null, 2));
+  // console.log(jsonToCsv(csvKeys, csvKeysMap, results).join('\n'));
 });
