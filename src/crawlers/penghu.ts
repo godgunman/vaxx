@@ -14,7 +14,7 @@ const parse = async () => {
   ).text();
 
   const city = '澎湖縣';
-  const csvKeys = [
+  const csvKeys: (keyof Place)[] = [
     'city',
     'name',
     'district',
@@ -22,24 +22,6 @@ const parse = async () => {
     'phone',
     'lng',
     'lat',
-    // 'specialty',
-    // 'serial',
-    // 'note',
-    // 'department',
-  ];
-
-  const csvKeysMap = [
-    '施打站縣市',
-    '施打站全稱',
-    '施打站行政區',
-    '施打站地址',
-    '預約電話',
-    '施打站經度',
-    '施打站緯度',
-    // 'specialty',
-    // 'serial',
-    // 'note',
-    // 'department',
   ];
 
   const results: Place[] = [];
@@ -80,10 +62,7 @@ const parse = async () => {
   }
 
   fs.writeFileSync(outputJson, JSON.stringify(results, null, 2));
-  fs.writeFileSync(
-    outputCsv,
-    jsonToCsv(csvKeys, csvKeysMap, results).join('\n'),
-  );
+  fs.writeFileSync(outputCsv, jsonToCsv(csvKeys, results).join('\n'));
 };
 
 parse();

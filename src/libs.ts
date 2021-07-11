@@ -3,12 +3,22 @@ import { GOOGLE_API_KEY } from './constants';
 import fetch from 'node-fetch';
 import { Place } from './types';
 
-export const jsonToCsv = (
-  keys: string[],
-  csvKeysMap: string[],
-  data: Place[],
-) => {
-  const rows = [csvKeysMap.join(',')];
+const csvKeysMap = {
+  city: '施打站縣市',
+  name: '施打站全稱',
+  district: '施打站行政區',
+  address: '施打站地址',
+  phone: '預約電話',
+  lng: '施打站經度',
+  lat: '施打站緯度',
+  specialty: 'specialty',
+  serial: 'serial',
+  note: 'note',
+  department: 'department',
+};
+
+export const jsonToCsv = (keys: (keyof Place)[], data: Place[]) => {
+  const rows = [keys.map(key => csvKeysMap[key]).join(',')];
   for (const obj of data) {
     const row = keys.map(k => (obj as any)[k as any]).join(',');
     rows.push(row);
