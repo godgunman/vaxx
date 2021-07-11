@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import xml2js from 'xml2js';
 import { getPlaceInfo, jsonToCsv } from '../libs';
+import { Place } from '../types';
 
 const xmlFile = path.join(
   __dirname,
@@ -60,14 +61,18 @@ xml2js
           lng,
           lat,
         };
-        let placeInfo = {};
+        let placeInfo = {
+          address: '',
+          phone: '',
+          district: '',
+        };
         try {
           placeInfo = await getPlaceInfo(result.name);
         } catch (e) {
           console.error(e);
         }
 
-        results.push({ ...result, ...placeInfo });
+        results.push({ ...placeInfo, ...result });
       }
     }
     // console.log(results);
