@@ -3,7 +3,8 @@ import { GOOGLE_API_KEY } from './constants';
 import fetch from 'node-fetch';
 import { Place } from './types';
 
-const csvKeysMap = {
+// eslint-disable-next-line no-unused-vars
+const csvKeysMap: { [key in keyof Place]: string } = {
   city: '施打站縣市',
   name: '施打站全稱',
   district: '施打站行政區',
@@ -15,6 +16,9 @@ const csvKeysMap = {
   serial: 'serial',
   note: 'note',
   department: 'department',
+  crawlerLastModified: '爬蟲結果資料抓取時間',
+  googleMapsUrl: 'Google Maps Url',
+  googleMapsUrlLastModified: 'Google Maps Url last modified',
 };
 
 export const jsonToCsv = (keys: (keyof Place)[], data: Place[]) => {
