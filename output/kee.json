@@ -7,8 +7,10 @@
     "lng": 121.7077432,
     "placeId": "ChIJK4wTx8RNXTQRdiEc3wjBpDg",
     "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJK4wTx8RNXTQRdiEc3wjBpDg",
+    "googleMapsUrlLastModified": "2021-07-29T20:50:35.590Z",
     "name": "長庚醫療財團法人基隆長庚紀念醫院",
-    "city": "基隆市"
+    "city": "基隆市",
+    "crawlerLastModified": "2021-07-29T20:50:35.454Z"
   },
   {
     "address": "基隆市中正區正榮街100號",
@@ -18,8 +20,10 @@
     "lng": 121.7642007,
     "placeId": "ChIJYy2buFROXTQRZjFx4J7mLjE",
     "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJYy2buFROXTQRZjFx4J7mLjE",
+    "googleMapsUrlLastModified": "2021-07-29T20:50:35.612Z",
     "name": "三軍總醫院附設基隆民眾診療服務處",
-    "city": "基隆市"
+    "city": "基隆市",
+    "crawlerLastModified": "2021-07-29T20:50:35.454Z"
   },
   {
     "address": "基隆市信義區信二路268號",
@@ -29,8 +33,10 @@
     "lng": 121.7484539,
     "placeId": "ChIJp16DtDhOXTQR1Iwx6HBuoGw",
     "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJp16DtDhOXTQR1Iwx6HBuoGw",
+    "googleMapsUrlLastModified": "2021-07-29T20:50:35.613Z",
     "name": "衛生福利部基隆醫院",
-    "city": "基隆市"
+    "city": "基隆市",
+    "crawlerLastModified": "2021-07-29T20:50:35.454Z"
   },
   {
     "address": "基隆市暖暖區源遠路29號",
@@ -40,8 +46,10 @@
     "lng": 121.7332409,
     "placeId": "ChIJ-ZTrhORRXTQRU6ZM9MuWycA",
     "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ-ZTrhORRXTQRU6ZM9MuWycA",
+    "googleMapsUrlLastModified": "2021-07-29T20:50:35.612Z",
     "name": "醫療財團法人臺灣區煤礦業基金會臺灣礦工醫院",
-    "city": "基隆市"
+    "city": "基隆市",
+    "crawlerLastModified": "2021-07-29T20:50:35.454Z"
   },
   {
     "address": "基隆市中正區義二路2巷6號",
@@ -51,8 +59,10 @@
     "lng": 121.7455786,
     "placeId": "ChIJvSejDD9OXTQRTnmpoWdjP-I",
     "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvSejDD9OXTQRTnmpoWdjP-I",
+    "googleMapsUrlLastModified": "2021-07-29T20:50:35.609Z",
     "name": "基隆市立醫院",
-    "city": "基隆市"
+    "city": "基隆市",
+    "crawlerLastModified": "2021-07-29T20:50:35.454Z"
   },
   {
     "address": "基隆市中正區中正路30號",
@@ -62,7 +72,9 @@
     "lng": 121.7448737,
     "placeId": "ChIJv14zYUBOXTQRsd84fPTOgJA",
     "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJv14zYUBOXTQRsd84fPTOgJA",
+    "googleMapsUrlLastModified": "2021-07-29T20:50:35.612Z",
     "name": "新昆明醫院",
-    "city": "基隆市"
+    "city": "基隆市",
+    "crawlerLastModified": "2021-07-29T20:50:35.454Z"
   }
 ]
