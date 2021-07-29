@@ -1,0 +1,68 @@
+[
+  {
+    "address": "基隆市安樂區麥金路222號",
+    "phone": "02 2432 9292",
+    "district": "安樂區",
+    "lat": 25.1489867,
+    "lng": 121.7077432,
+    "placeId": "ChIJK4wTx8RNXTQRdiEc3wjBpDg",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJK4wTx8RNXTQRdiEc3wjBpDg",
+    "name": "長庚醫療財團法人基隆長庚紀念醫院",
+    "city": "基隆市"
+  },
+  {
+    "address": "基隆市中正區正榮街100號",
+    "phone": "02 2462 5714#1265",
+    "district": "中正區",
+    "lat": 25.1446139,
+    "lng": 121.7642007,
+    "placeId": "ChIJYy2buFROXTQRZjFx4J7mLjE",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJYy2buFROXTQRZjFx4J7mLjE",
+    "name": "三軍總醫院附設基隆民眾診療服務處",
+    "city": "基隆市"
+  },
+  {
+    "address": "基隆市信義區信二路268號",
+    "phone": "02 2429 2525",
+    "district": "信義區",
+    "lat": 25.1306142,
+    "lng": 121.7484539,
+    "placeId": "ChIJp16DtDhOXTQR1Iwx6HBuoGw",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJp16DtDhOXTQR1Iwx6HBuoGw",
+    "name": "衛生福利部基隆醫院",
+    "city": "基隆市"
+  },
+  {
+    "address": "基隆市暖暖區源遠路29號",
+    "phone": "02 2457 9101",
+    "district": "暖暖區",
+    "lat": 25.1079471,
+    "lng": 121.7332409,
+    "placeId": "ChIJ-ZTrhORRXTQRU6ZM9MuWycA",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ-ZTrhORRXTQRU6ZM9MuWycA",
+    "name": "醫療財團法人臺灣區煤礦業基金會臺灣礦工醫院",
+    "city": "基隆市"
+  },
+  {
+    "address": "基隆市中正區義二路2巷6號",
+    "phone": "02 2428 2146",
+    "district": "中正區",
+    "lat": 25.1305137,
+    "lng": 121.7455786,
+    "placeId": "ChIJvSejDD9OXTQRTnmpoWdjP-I",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJvSejDD9OXTQRTnmpoWdjP-I",
+    "name": "基隆市立醫院",
+    "city": "基隆市"
+  },
+  {
+    "address": "基隆市中正區中正路30號",
+    "phone": "02 2426 8106",
+    "district": "中正區",
+    "lat": 25.1331296,
+    "lng": 121.7448737,
+    "placeId": "ChIJv14zYUBOXTQRsd84fPTOgJA",
+    "googleMapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJv14zYUBOXTQRsd84fPTOgJA",
+    "name": "新昆明醫院",
+    "city": "基隆市"
+  }
+]
