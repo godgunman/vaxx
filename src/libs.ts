@@ -24,7 +24,15 @@ const csvKeysMap: { [key in keyof Place]: string } = {
 export const jsonToCsv = (keys: (keyof Place)[], data: Place[]) => {
   const rows = [keys.map(key => csvKeysMap[key]).join(',')];
   for (const obj of data) {
-    const row = keys.map(k => (obj as any)[k as any]).join(',');
+    const row = keys
+      .map(k => {
+        if (k === 'googleMapsUrlLastModified' || k === 'crawlerLastModified') {
+          return obj[k]?.toISOString();
+        } else {
+          return obj[k];
+        }
+      })
+      .join(',');
     rows.push(row);
   }
   return rows;
@@ -40,6 +48,7 @@ export const getPlaceInfo = async (
   lng: string;
   placeId: string;
   googleMapsUrl: string;
+  googleMapsUrlLastModified: Date;
 }> => {
   const encodedName = encodeURI(name);
   const findPlaceFromText = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodedName}&inputtype=textquery&key=${GOOGLE_API_KEY}`;
@@ -75,6 +84,7 @@ export const getPlaceInfo = async (
     lng,
     placeId,
     googleMapsUrl: `https://www.google.com/maps/place/?q=place_id:${placeId}`,
+    googleMapsUrlLastModified: new Date(),
   };
 };
 

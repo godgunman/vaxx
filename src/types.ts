@@ -15,5 +15,5 @@ export type Place = {
   department?: string;
   crawlerLastModified?: Date;
   googleMapsUrl?: string;
-  googleMapsUrlLastModified?: string;
+  googleMapsUrlLastModified?: Date;
 };

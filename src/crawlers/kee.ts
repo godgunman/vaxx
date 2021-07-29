@@ -2,7 +2,7 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
-import { getPlaceInfo, jsonToCsv } from '../libs';
+import { decorateByPlaceApi, getPlaceInfo, jsonToCsv } from '../libs';
 import { Place } from '../types';
 
 const city = '基隆市';
@@ -16,30 +16,11 @@ const parse = async () => {
     await fetch('https://www.klchb.klcg.gov.tw/tw/klchb/1361-106887.html')
   ).text();
 
-  const csvKeys: (keyof Place)[] = [
-    'city',
-    'name',
-    'district',
-    'address',
-    'phone',
-    'lng',
-    'lat',
-  ];
-
-  const results: Place[] = [];
   const $ = cheerio.load(text);
 
-  const elements: {
-    name: string;
-    city: string;
-    district: string;
-    address: string;
-  }[] = [];
+  const elements: Place[] = [];
 
   const selector = 'table > tbody > tr';
-
-  // console.log($(selector).text());
-
   $(selector).each((index, e) => {
     const td = $(e).find('td');
     if (td.length === 9 && td.text().indexOf('編號') === -1) {
@@ -52,26 +33,26 @@ const parse = async () => {
         city,
         district: td.eq(1).text(),
         address: td.eq(7).text(),
+        crawlerLastModified: new Date(),
       });
     }
   });
 
   console.log(elements);
+  const results = await decorateByPlaceApi(elements);
 
-  for (const e of elements) {
-    console.log(e.name);
-    let placeInfo = {
-      address: '',
-      phone: '',
-      district: '',
-    };
-    try {
-      placeInfo = await getPlaceInfo(city + e.name);
-    } catch (e) {
-      console.error(e);
-    }
-    results.push({ ...placeInfo, ...e });
-  }
+  const csvKeys: (keyof Place)[] = [
+    'city',
+    'name',
+    'district',
+    'address',
+    'phone',
+    'lng',
+    'lat',
+    'crawlerLastModified',
+    'googleMapsUrl',
+    'googleMapsUrlLastModified',
+  ];
 
   fs.writeFileSync(outputJson, JSON.stringify(results, null, 2));
   fs.writeFileSync(outputCsv, jsonToCsv(csvKeys, results).join('\n'));
