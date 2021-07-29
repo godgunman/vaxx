@@ -38,6 +38,8 @@ export const getPlaceInfo = async (
   district: string;
   lat: string;
   lng: string;
+  placeId: string;
+  googleMapsUrl: string;
 }> => {
   const encodedName = encodeURI(name);
   const findPlaceFromText = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodedName}&inputtype=textquery&key=${GOOGLE_API_KEY}`;
@@ -71,5 +73,7 @@ export const getPlaceInfo = async (
     district,
     lat,
     lng,
+    placeId,
+    googleMapsUrl: `https://www.google.com/maps/place/?q=place_id:${placeId}`,
   };
 };
