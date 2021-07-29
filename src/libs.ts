@@ -77,3 +77,29 @@ export const getPlaceInfo = async (
     googleMapsUrl: `https://www.google.com/maps/place/?q=place_id:${placeId}`,
   };
 };
+
+export const decorateByPlaceApi = async (
+  places: (Partial<Place> & { name: string; city: string })[],
+) => {
+  const results: Place[] = [];
+
+  const promises = places.map(async (place, index) => {
+    const { name, city } = place;
+
+    console.log(name);
+    let placeInfo = {
+      address: '',
+      phone: '',
+      district: '',
+    };
+    try {
+      placeInfo = await getPlaceInfo(city + name);
+    } catch (e) {
+      console.error(e);
+    }
+    results[index] = { ...placeInfo, ...place };
+  });
+
+  await Promise.all(promises);
+  return results;
+};
