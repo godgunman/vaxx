@@ -11,5 +11,7 @@
   "eslint.format.enable": true,
   "editor.formatOnSave": true,
   "prettier.configPath": ".prettierrc.json",
-  "cSpell.words": []
+  "cSpell.words": [
+    "airtable"
+  ]
 }
