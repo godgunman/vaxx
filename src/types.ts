@@ -28,3 +28,15 @@ export type GooglePlace = {
   placeId: string;
   googleMapsUrl: string;
 };
+
+export type AnyObject = {
+  [property: string]: any;
+};
+
+export type AirtableRow = {
+  id: string;
+  fields: AnyObject;
+  createdTime: string;
+};
+
+export type AirtableKeyMappingRow = { [property: string]: AirtableRow };
