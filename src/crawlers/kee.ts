@@ -2,7 +2,7 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
-import { decorateByPlaceApi, getPlaceInfo, jsonToCsv } from '../libs';
+import { decorateByPlaceApi, jsonToCsv } from '../libs';
 import { Place } from '../types';
 
 const city = '基隆市';
