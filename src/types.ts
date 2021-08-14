@@ -17,3 +17,14 @@ export type Place = {
   googleMapsUrl?: string;
   googleMapsUrlLastModified?: Date;
 };
+
+export type GooglePlace = {
+  searchName: string;
+  address: string;
+  phone: string;
+  district: string;
+  lat: string;
+  lng: string;
+  placeId: string;
+  googleMapsUrl: string;
+};

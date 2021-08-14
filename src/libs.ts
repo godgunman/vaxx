@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { GOOGLE_API_KEY } from './constants';
 import fetch from 'node-fetch';
-import { Place } from './types';
+import { GooglePlace, Place } from './types';
 
 // eslint-disable-next-line no-unused-vars
 const csvKeysMap: { [key in keyof Place]: string } = {
@@ -38,22 +38,17 @@ export const jsonToCsv = (keys: (keyof Place)[], data: Place[]) => {
   return rows;
 };
 
-export const getPlaceInfo = async (
-  name: string,
-): Promise<{
-  address: string;
-  phone: string;
-  district: string;
-  lat: string;
-  lng: string;
-  placeId: string;
-  googleMapsUrl: string;
-  googleMapsUrlLastModified: Date;
-}> => {
+export const getPlaceInfo = async (name: string): Promise<GooglePlace> => {
   const encodedName = encodeURI(name);
   const findPlaceFromText = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodedName}&inputtype=textquery&key=${GOOGLE_API_KEY}`;
 
-  const { candidates } = await (await fetch(findPlaceFromText)).json();
+  const json = await (await fetch(findPlaceFromText)).json();
+  const { candidates } = json;
+
+  if (!candidates || !candidates.length) {
+    throw new Error('candidates error: ' + JSON.stringify(json, null, 2));
+  }
+
   const placeId = candidates[0].place_id;
   const details = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${GOOGLE_API_KEY}&language=zh-TW`;
 
@@ -77,6 +72,7 @@ export const getPlaceInfo = async (
   }
 
   return {
+    searchName: name,
     address: formatted_address,
     phone: formatted_phone_number,
     district,
@@ -84,7 +80,6 @@ export const getPlaceInfo = async (
     lng,
     placeId,
     googleMapsUrl: `https://www.google.com/maps/place/?q=place_id:${placeId}`,
-    googleMapsUrlLastModified: new Date(),
   };
 };
 
